@@ -1,0 +1,36 @@
+{
+  "new_ticket": {
+    "event": "new_ticket",
+    "timestamp": "2026-05-27T08:00:00.000Z",
+    "ticketId": "uuid-here",
+    "subject": "Login page fails with status 500",
+    "body": "I cannot sign in since this morning.",
+    "source": "web",
+    "status": "pending",
+    "customer_tier": "free",
+    "customer_phone": null,
+    "customer_name": null,
+    "customer_email": "user@example.com",
+    "dashboard_url": "http://localhost:5173"
+  },
+  "ticket_processed": {
+    "event": "ticket_processed",
+    "timestamp": "2026-05-27T08:01:30.000Z",
+    "ticketId": "uuid-here",
+    "subject": "Login page fails with status 500",
+    "body": "I cannot sign in since this morning.",
+    "source": "whatsapp",
+    "status": "awaiting_approval",
+    "customer_tier": "free",
+    "customer_phone": "whatsapp:+919876543210",
+    "customer_name": "Priyal",
+    "customer_email": null,
+    "classification": "Bug",
+    "urgency": "High",
+    "confidence": 0.72,
+    "reasoning": "User reports login failure affecting access.",
+    "draft_reply": "Thank you for reporting this...",
+    "auto_sent": false,
+    "dashboard_url": "http://localhost:5173"
+  }
+}
