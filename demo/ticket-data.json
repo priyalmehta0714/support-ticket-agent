@@ -1,0 +1,22 @@
+{
+  "id": "fbdf1ef3-c715-4adf-9350-7109687c9a1e",
+  "subject": "Production database is down",
+  "body": "Database not responding since 10 AM. All users affected. Need immediate help.",
+  "customer_phone": "demo@example.com",
+  "customer_name": null,
+  "customer_tier": "premium",
+  "source": "web",
+  "status": "escalated",
+  "created_at": "2026-06-05T10:03:56.170Z",
+  "updated_at": "2026-06-05T10:05:05.536Z",
+  "classification": "Bug",
+  "urgency": "Critical",
+  "reasoning": "The production database is down, which affects all users and halts operations. This situation requires immediate attention as it is a critical system failure.",
+  "draft_reply": "Hi Customer,\n\nThank you for reaching out. I understand that the production database has been down since 10 AM and that this is affecting all users. I want to assure you that our team is aware of the issue and will begin investigating it immediately. We aim to have an update for you within the next 24 hours.\n\nThank you for your patience as we work to resolve this critical issue.\n\nBest regards,\nSupport Team",
+  "retrieved_docs": [],
+  "confidence": 0.85,
+  "langfuse_trace_id": "mock-trace-id",
+  "human_action": null,
+  "final_reply": null,
+  "decided_at": null
+}

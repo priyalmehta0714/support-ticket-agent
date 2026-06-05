@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support Ticket Agent — Demo</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, Segoe UI, sans-serif;
+      background: #0b0f19;
+      color: #e5e7eb;
+      overflow: hidden;
+    }
+    .slide {
+      display: none;
+      min-height: 100vh;
+      padding: 48px;
+      animation: fade 0.8s ease;
+    }
+    .slide.active { display: flex; flex-direction: column; justify-content: center; }
+    @keyframes fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    h1 { font-size: 2.4rem; margin-bottom: 12px; background: linear-gradient(90deg,#818cf8,#3b82f6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    h2 { font-size: 1.4rem; color: #9ca3af; margin-bottom: 28px; font-weight: 500; }
+    .card { background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 24px; margin: 12px 0; max-width: 900px; }
+    .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; margin-right:8px; }
+    .critical { background:#7f1d1d; color:#fecaca; }
+    .bug { background:#1e3a5f; color:#93c5fd; }
+    .review { background:#78350f; color:#fde68a; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:1000px; }
+    .mono { font-family: Consolas, monospace; font-size: 13px; color: #a5b4fc; word-break: break-all; }
+    .progress { position: fixed; bottom: 0; left: 0; height: 4px; background: #4f46e5; transition: width 0.2s linear; }
+    .footer { position: fixed; bottom: 16px; right: 24px; color: #6b7280; font-size: 12px; }
+    ul { margin-left: 20px; line-height: 1.8; color: #d1d5db; }
+    .stack span { display:inline-block; background:#1f2937; padding:6px 12px; border-radius:8px; margin:4px; font-size:14px; }
+  </style>
+</head>
+<body>
+  <div class="slide active" data-duration="5">
+    <h1>Support Ticket Agent</h1>
+    <h2>AI-powered ticket classification, draft replies, WhatsApp + voice escalation</h2>
+    <div class="card">
+      <p><strong>Built by Priyal Mehta</strong></p>
+      <p style="margin-top:12px;color:#9ca3af;">Node.js · BullMQ · PostgreSQL · FastAPI · LangGraph · OpenAI · Twilio</p>
+    </div>
+  </div>
+
+  <div class="slide" data-duration="6">
+    <h1>Step 1 — Create Ticket</h1>
+    <h2>Customer submits issue via Web or WhatsApp</h2>
+    <div class="card">
+      <p><strong>Subject:</strong> Production database is down</p>
+      <p style="margin-top:10px;"><strong>Body:</strong> Database not responding since 10 AM. All users affected. Need immediate help.</p>
+      <p style="margin-top:10px;"><strong>Source:</strong> Web · <strong>Tier:</strong> Premium</p>
+    </div>
+    <p style="margin-top:16px;color:#9ca3af;">Ticket enters Redis queue → background worker picks it up</p>
+  </div>
+
+  <div class="slide" data-duration="7">
+    <h1>Step 2 — AI Classification</h1>
+    <h2>Python LangGraph agent analyzes urgency and drafts reply</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="badge bug">Bug</span>
+        <span class="badge critical">Critical</span>
+        <span class="badge review">Needs Review</span>
+        <p style="margin-top:16px;color:#9ca3af;">Confidence: <strong>85%</strong></p>
+        <p style="margin-top:12px;">The production database is down, affecting all users. Critical system failure requiring immediate attention.</p>
+      </div>
+      <div class="card">
+        <p><strong>Draft Response</strong></p>
+        <p style="margin-top:12px;color:#d1d5db;line-height:1.6;">Hi Customer, our team is aware of the production database issue and is investigating immediately. We aim to update you within 24 hours. Best regards, Support Team</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" data-duration="6">
+    <h1>Step 3 — Human Approval</h1>
+    <h2>Critical tickets require supervisor approval before sending</h2>
+    <div class="card">
+      <ul>
+        <li>Dashboard shows <strong>Needs Review</strong> status</li>
+        <li>Agent reviews AI draft + reasoning</li>
+        <li>Approve → send reply (WhatsApp if applicable)</li>
+        <li>Reject → manual handling</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slide" data-duration="6">
+    <h1>Step 4 — Voice Escalation (Twilio)</h1>
+    <h2>For critical tickets, system calls owner for phone approval</h2>
+    <div class="card">
+      <p>Press <strong>1</strong> → approve and send WhatsApp reply</p>
+      <p style="margin-top:8px;">Press <strong>2</strong> → mark for manual handling</p>
+      <p style="margin-top:16px;" class="mono">GET /api/voice/twiml?ticketId=fbdf1ef3-c715-4adf-9350-7109687c9a1e</p>
+    </div>
+  </div>
+
+  <div class="slide" data-duration="5">
+    <h1>Tech Stack</h1>
+    <h2>Production-style architecture</h2>
+    <div class="stack">
+      <span>Node.js + Express</span><span>BullMQ + Redis</span><span>PostgreSQL</span>
+      <span>FastAPI + LangGraph</span><span>OpenAI</span><span>Qdrant</span>
+      <span>Twilio WhatsApp/Voice</span><span>Docker</span>
+    </div>
+    <p style="margin-top:24px;" class="mono">github.com/priyalmehta0714/support-ticket-agent</p>
+  </div>
+
+  <div class="progress" id="progress"></div>
+  <div class="footer" id="footer">Slide 1 / 6 · Auto-playing demo</div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const progress = document.getElementById('progress');
+    const footer = document.getElementById('footer');
+    let i = 0;
+    function show(idx) {
+      slides.forEach((s, n) => s.classList.toggle('active', n === idx));
+      footer.textContent = `Slide ${idx + 1} / ${slides.length} · Auto-playing demo`;
+      progress.style.width = '0%';
+      const duration = Number(slides[idx].dataset.duration || 5) * 1000;
+      const start = Date.now();
+      const timer = setInterval(() => {
+        const pct = Math.min(100, ((Date.now() - start) / duration) * 100);
+        progress.style.width = pct + '%';
+        if (pct >= 100) clearInterval(timer);
+      }, 50);
+      setTimeout(() => { i = (idx + 1) % slides.length; show(i); }, duration);
+    }
+    show(0);
+  </script>
+</body>
+</html>
