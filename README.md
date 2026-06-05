@@ -190,7 +190,7 @@ support-ticket-agent/
 ├── node-api/          # Express API + BullMQ workers
 ├── python-agent/      # FastAPI + LangGraph AI agent
 ├── frontend/          # React dashboard
-├── demo/              # Demo video + assets
+├── demo/              # Demo video (MP4)
 ├── docker-compose.yml
 └── README.md
 ```
